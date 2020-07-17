@@ -55,8 +55,20 @@ class InternationalMelonOrder(AbstractMelonOrder):
 
         return self.country_code
 
+class GovernmentMelonOrder(AbstractMelonOrder):
+    """Govt melon order"""
+    passed_inspection = False
+
+    def __init__(self, species, qty):
+        super().__init__(species, qty, 'government', 0)
+
+
+    def marked_inspection(self, passed):
+        self.passed_inspection = passed
+
 # Sample melons to instantiate
 melon1 = DomesticMelonOrder('crenshaw', 10)                            
 melon2 = DomesticMelonOrder('christmas', 10)                           
 melon3 = InternationalMelonOrder('crenshaw', 5, 'AUS')                 
-melon4 = InternationalMelonOrder('yellow watermelon', 10, 'GB')   
+melon4 = InternationalMelonOrder('yellow watermelon', 10, 'GB')
+melon5 = GovernmentMelonOrder('watermelon', 100)   
